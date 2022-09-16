@@ -1,6 +1,8 @@
 # Kacper Strzelecki, TK20
 # Moment03, uppgiften E
 
+#värdena i sluttabellen kan skilja sig åt de som finns på kursrolle, då avrunding sker (kan vara så att sker inte i samma moment som det skedde på kursrolle)
+
 #skatter
 kommun = 0.2136
 land = 0.1148
