@@ -19,11 +19,11 @@ if answer == "Y":
     area = pi * R ** 2
     per = 2 * pi * R
     print("""
-    Radie:      {0:5}m
+    Radius:     {0:5}m
     ------------------
     Area:       {1:5.2f}m\u00b2
     ------------------
-    Omkrets:    {2:5.2f}m
+    Perimeter:  {2:5.2f}m
     """.format(radius, area, per))
 # if answer is NOT in decimals (whole number)
 elif answer == "N":
