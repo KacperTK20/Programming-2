@@ -1,5 +1,5 @@
 # Kacper Strzelecki, TK20
-# Moment02, uppgiften a
+# Moment03, uppgiften A, B, C, D
 
 #månadslön inmätning
 lon = int(input("Ange din bruttomånadslön: ").strip())
