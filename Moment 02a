@@ -1,0 +1,44 @@
+# Kacper Strzelecki, TK20
+# Moment02, uppgiften a
+
+import math
+# enter the radius in meters
+radius = input("Enter the radius of the circle in meters: ")
+# asking if the answer is in decimals or not
+answer = input("Did you entered the value in decimals (Y/N): ")
+# no matter if the user enter the lower case or the upper case the code will transform the letter to the upper case
+# the code is working only if the upper "Y" or "N" is set
+answer = answer[0]
+answer = answer.upper()
+print(answer)
+# if answer is in decimals
+if answer == "Y":
+    # setting radius to float, to allow the code make the calculations
+    R = float(radius)
+    pi = math.pi
+    area = pi * R ** 2
+    per = 2 * pi * R
+    print("""
+    Radie:      {0:5}m
+    ------------------
+    Area:       {1:5.2f}m\u00b2
+    ------------------
+    Omkrets:    {2:5.2f}m
+    """.format(radius, area, per))
+# if answer is NOT in decimals (whole number)
+elif answer == "N":
+    # setting radius to int, to allow the code make the calculations
+    R = int(radius)
+    pi = math.pi
+    area = pi * R ** 2
+    per = 2 * pi * R
+    print("""
+    Radius:     {0:5}m
+    ------------------
+    Area:       {1:5.2f}m\u00b2
+    ------------------
+    Perimeter:  {2:5.2f}m
+    """.format(radius, area, per))
+else: 
+    # if answer is not Yes or No (Y or N) the code will display an error like this:
+    print("Wrong answer. Reset the code")
