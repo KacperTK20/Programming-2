@@ -1,0 +1,144 @@
+# Kacper Strzelecki, TK20
+# Moment02, uppgiften a
+
+#månadslön inmätning
+lon = int(input("Ange din bruttomånadslön: ").strip())
+#årslön
+arslon = 12 * lon
+#skatter
+kommun = 0.2136
+land = 0.1148
+varnskatt = 0.05
+statlig = 0.2
+#brytpunkter
+brytpunkt1 = 19247
+brytpunkt2 = 468700
+brytpunkt3 = 675700
+#inkomst med avdrag (den skattefria delen)
+bas_inkomst = arslon - brytpunkt1
+bas = bas_inkomst/12
+ 
+
+#inkomst är mindre eller lika med 19 247
+if arslon <= brytpunkt1 and arslon >= 0:
+    
+    KS = 0
+    LS = 0
+    kvar = lon
+    TS = 0
+    andelen = 0
+    
+    print("""
+Årslön:             {0:7}kr
+-----------------------------
+Månadslön:          {1:7}kr
+-----------------------------
+Kommunal skatt:     {2:7}kr
+-----------------------------
+Landstingsskatt:    {3:7}kr
+-----------------------------
+Kvar efter skatt:   {4:7}kr
+-----------------------------
+Totalskatt:         {5:7}kr
+-----------------------------
+Andel betald skatt: {6:8}%
+-----------------------------
+Hela din årsinkomst är skattefri!
+Brytpunken ligger på: {7}kr
+""".format(arslon ,lon, round(KS), round(LS), round(kvar), round(TS), round(andelen, 2), brytpunkt1))
+
+
+#inkomst mindre eller lika med 468 700 och större än 19 247
+elif arslon > brytpunkt1 and arslon <= brytpunkt2:
+    
+    KS = bas * kommun
+    LS = bas * land
+    TS = KS + LS
+    kvar = lon - TS
+    andelen = TS/lon * 100
+    
+    print("""
+Årslön:             {0:7}kr
+-----------------------------
+Månadslön:          {1:7}kr
+-----------------------------
+Kommunal skatt:     {2:7}kr
+-----------------------------
+Landstingsskatt:    {3:7}kr
+-----------------------------
+Kvar efter skatt:   {4:7}kr
+-----------------------------
+Totalskatt:         {5:7}kr
+-----------------------------
+Andel betald skatt: {6:8}%
+""".format(arslon ,round(lon), round(KS), round(LS), round(kvar), round(TS), round(andelen, 2)))
+
+
+#inkomst större än 468 700 och mindre eller lika med 675 700
+elif arslon > brytpunkt2 and arslon <= brytpunkt3:
+    
+    KS = bas * kommun
+    LS = bas * land
+    statlig_bas = (arslon - brytpunkt2)/12
+    SS = statlig_bas * statlig
+    TS = KS + LS + SS
+    kvar = lon - TS
+    andelen = TS/lon * 100
+    
+    print("""
+Årslön:             {0:7}kr
+-----------------------------
+Månadslön:          {1:7}kr
+-----------------------------
+Kommunal skatt:     {2:7}kr
+-----------------------------
+Landstingsskatt:    {3:7}kr
+-----------------------------
+Statlig skatt:      {4:7}kr
+-----------------------------
+Kvar efter skatt:   {5:7}kr
+-----------------------------
+Totalskatt:         {6:7}kr
+-----------------------------
+Andel betald skatt: {7:8}%
+-----------------------------
+Del av din årsinkomst är beskattat med statlig skatt!
+Brytpunken ligger på: {8}kr
+""".format(arslon ,lon, round(KS), round(LS),round(SS), round(kvar), round(TS), round(andelen, 2), brytpunkt2))
+
+
+#inkomst större än 675 700
+elif arslon > brytpunkt3:
+    
+    KS = bas * kommun
+    LS = bas * land
+    statlig_bas = (arslon - brytpunkt2)/12
+    SS = statlig_bas * statlig
+    varn_bas = (arslon - brytpunkt3)/12
+    VS = varn_bas * varnskatt
+    TS = KS + LS + SS + VS
+    kvar = lon - TS
+    andelen = TS/lon * 100
+    
+    print("""
+Årslön:             {0:7}kr
+-----------------------------
+Månadslön:          {1:7}kr
+-----------------------------
+Kommunal skatt:     {2:7}kr
+-----------------------------
+Landstingsskatt:    {3:7}kr
+-----------------------------
+Statlig skatt:      {4:7}kr
+-----------------------------
+Värnskatt:          {5:7}kr
+-----------------------------
+Kvar efter skatt:   {6:7}kr
+-----------------------------
+Totalskatt:         {7:7}kr
+-----------------------------
+Andel betald skatt: {8:8}%
+-----------------------------
+Del av din årsinkomst är beskattat med statlig skatt samt värnskatt!
+Brytpunken för värnskatt ligger på: {9}kr
+""".format(arslon ,lon, round(KS), round(LS), round(SS), round(VS), round(kvar), round(TS), round(andelen, 2), brytpunkt3))
