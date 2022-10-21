@@ -17,7 +17,13 @@ class Person:
     def __str__(self):
         return f"Name: {self.name} \nResult: {self.result}"
 
-#function for receiving info from the list
+
+#funktion for adding the variables (needed to count the average)
+def average():
+    global var1
+    var1 += result
+
+#function for receiving info from the file
 def info():
     global name
     global result
@@ -39,26 +45,25 @@ def info():
             resultat.append(result)
             average()
 
-
 # getting stats
 def statistic():
-    global sorted_x
+    global sorted_people
     global average
     global median
     print("Results of the test: ")
     #sorting the list of class Person (names + results)
-    sorted_x = sorted(people, key=operator.attrgetter('result'))
+    sorted_people = sorted(people, key=operator.attrgetter('result'))
     #every element is then printed out in the correct order (from the lowest score to the highest)
-    for element in sorted_x:
+    for element in sorted_people:
         print("------------------------------")
         print(element)
     print("------------------------------")
     #getting the lowest score
     print("The lowest score belongs to: ")
-    print(sorted_x[0])
+    print(sorted_people[0])
     print("------------------------------")
     #defining average (var1 was already calculated in average() inside info())
-    length = len(sorted_x)
+    length = len(sorted_people)
     average = round(var1/length, 2)
     print("Average result: " + str(average))
     #sorting the resultats (list needed to calculate the median)
@@ -81,20 +86,17 @@ def statistic():
         print("------------------------------")
         print("Median: " + str(median))
 
-#funktion for adding the variables (needed to count the average)
-def average():
-    global var1
-    var1 += result
+
 
 #saving in a new file
 def printing():
     with open ("results.txt" , "w") as fw:
         #print every element in sorted list (sorted from the lowest score to the highest)
-        for element in sorted_x:
+        for element in sorted_people:
             fw.write(str(element))
             fw.write("\n")
         fw.write("\nThe lowest score belongs to: \n")
-        fw.write(str(sorted_x[0]))
+        fw.write(str(sorted_people[0]))
         fw.write("\n\nThe average score is:  \n")
         fw.write(str(average))
         fw.write("\n\nThe median is: \n")
