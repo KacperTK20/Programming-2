@@ -57,13 +57,13 @@ for i in inkomster:
         LS = land * skatte_bas
         LS = round(LS)
         land_skatt.append(LS)
-        #statlig skatt är 0, sätter in denna värden på listan
+        #statlig skatt är 0, sätter in detta värdet på listan
         SS = 0
         statlig_skatt.append(SS)
-        #beräkna det totala skatten
+        #beräkna den totala skatten
         TS = KS + LS + SS
         total_skatt.append(TS)
-        #beräkna skattebelastningen och multiplicera det med 100, för att få värde i % (% adderas vi utprint)
+        #beräkna skattebelastningen och multiplicera det med 100, för att få värde i % (% adderas vi i utprint)
         andelen = (TS/i) * 100
         andelen = round(andelen, 2)
         andelen_skatt.append(andelen)
